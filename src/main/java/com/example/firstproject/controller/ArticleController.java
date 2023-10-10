@@ -32,15 +32,14 @@ public class ArticleController {
 
     @PostMapping("/articles/create")
     public String createArticle(ArticleForm form){
-//        System.out.println(form.toString());
         log.info(form.toString());
+
         // 1. DTO를 엔티티로 변환
         Article article = form.toEntity();
-//        System.out.println(article.toString());
         log.info(article.toString());
+
         // 2. 리파지터리로 엔티티를 DB에 저장
         Article saved = articleRepository.save(article);
-//        System.out.println(saved.toString());
         log.info(saved.toString());
 
         return "redirect:/articles/" + saved.getId();
