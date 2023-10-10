@@ -32,8 +32,7 @@ public class CommentService {
             dtos.add(dto);
         }*/
         // 3. 결과 반환
-        return commentRepository.findByArticleId(articleId)
-                .stream()// 댓글 엔티티 목록을 스트림으로 변환
+        return commentRepository.findByArticleId(articleId).stream() // 댓글 엔티티 목록을 스트림으로 변환
                 .map(comment -> CommentDto.createCommentDto(comment))// 엔티티를 DTO로 매핑
                 .collect(Collectors.toList()); // 스트림을 리스트로 변환
     }
